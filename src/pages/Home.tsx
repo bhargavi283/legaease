@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
-import { Scale, Users, Award, Clock, Shield, CheckCircle } from "lucide-react";
+import { Scale, Users, Award, Clock, Shield, CheckCircle, Star, Phone, Mail, MapPin, Gavel, TrendingUp, Globe, ArrowRight } from "lucide-react";
 
 const Home = () => {
   const features = [
@@ -40,26 +40,51 @@ const Home = () => {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative bg-gradient-hero py-24 px-4">
-        <div className="container mx-auto max-w-6xl">
+      <section className="relative bg-gradient-hero py-24 px-4 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5"></div>
+        <div className="container mx-auto max-w-6xl relative">
           <div className="text-center">
-            <Badge variant="secondary" className="mb-6">
+            <Badge variant="secondary" className="mb-6 shadow-glow">
+              <Award className="w-4 h-4 mr-2" />
               Trusted Legal Experts Since 1995
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
               Protecting Your Rights,
-              <span className="text-primary block">Securing Your Future</span>
+              <span className="text-primary block bg-gradient-primary bg-clip-text text-transparent">Securing Your Future</span>
             </h1>
-            <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
               Premier legal services with a commitment to excellence. Our experienced attorneys 
               provide strategic counsel and aggressive representation to achieve the best outcomes for our clients.
             </p>
+            
+            {/* Stats Row */}
+            <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto mb-8">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary">500+</div>
+                <div className="text-sm text-muted-foreground">Cases Won</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary">25+</div>
+                <div className="text-sm text-muted-foreground">Years Experience</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary">98%</div>
+                <div className="text-sm text-muted-foreground">Success Rate</div>
+              </div>
+            </div>
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" asChild>
-                <Link to="/contact">Free Consultation</Link>
+              <Button size="lg" className="shadow-glow" asChild>
+                <Link to="/contact">
+                  <Phone className="w-5 h-5 mr-2" />
+                  Free Consultation
+                </Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <Link to="/practice-areas">Our Services</Link>
+                <Link to="/practice-areas">
+                  Our Services
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Link>
               </Button>
             </div>
           </div>
@@ -81,10 +106,12 @@ const Home = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
-              <Card key={index} className="text-center border-border bg-card hover:shadow-elegant transition-all duration-300">
+              <Card key={index} className="text-center border-border bg-card hover:shadow-elegant hover:scale-105 transition-all duration-300 group">
                 <CardHeader>
-                  <feature.icon className="h-12 w-12 text-primary mx-auto mb-4" />
-                  <CardTitle className="text-xl">{feature.title}</CardTitle>
+                  <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <feature.icon className="h-8 w-8 text-primary" />
+                  </div>
+                  <CardTitle className="text-xl group-hover:text-primary transition-colors">{feature.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-muted-foreground">
@@ -111,11 +138,13 @@ const Home = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {practiceAreas.map((area, index) => (
-              <Card key={index} className="border-border bg-card hover:shadow-elegant transition-all duration-300">
+              <Card key={index} className="border-border bg-card hover:shadow-elegant hover:border-primary/30 transition-all duration-300 group">
                 <CardContent className="p-6">
                   <div className="flex items-center space-x-3">
-                    <CheckCircle className="h-6 w-6 text-primary" />
-                    <span className="text-lg font-medium text-foreground">{area}</span>
+                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                      <CheckCircle className="h-5 w-5 text-primary" />
+                    </div>
+                    <span className="text-lg font-medium text-foreground group-hover:text-primary transition-colors">{area}</span>
                   </div>
                 </CardContent>
               </Card>
@@ -130,10 +159,67 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section className="py-20 px-4">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              What Our Clients Say
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Don't just take our word for it. See what our satisfied clients have to say about our legal services.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                quote: "LegalPro saved my business. Their expertise in corporate law is unmatched.",
+                author: "Sarah Johnson",
+                role: "CEO, TechStart Inc.",
+                rating: 5
+              },
+              {
+                quote: "Professional, responsive, and results-driven. I couldn't ask for better representation.",
+                author: "Michael Chen",
+                role: "Real Estate Developer",
+                rating: 5
+              },
+              {
+                quote: "They turned a nightmare situation into a victory. Truly exceptional lawyers.",
+                author: "Emma Rodriguez",
+                role: "Small Business Owner",
+                rating: 5
+              }
+            ].map((testimonial, index) => (
+              <Card key={index} className="border-border bg-card hover:shadow-elegant transition-all duration-300">
+                <CardContent className="p-6">
+                  <div className="flex mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="h-5 w-5 text-primary fill-current" />
+                    ))}
+                  </div>
+                  <blockquote className="text-foreground mb-4 italic">
+                    "{testimonial.quote}"
+                  </blockquote>
+                  <div className="border-t border-border pt-4">
+                    <div className="font-semibold text-foreground">{testimonial.author}</div>
+                    <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-secondary">
-        <div className="container mx-auto max-w-4xl text-center">
-          <Shield className="h-16 w-16 text-primary mx-auto mb-6" />
+      <section className="py-20 px-4 bg-gradient-secondary relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-primary/10"></div>
+        <div className="container mx-auto max-w-4xl text-center relative">
+          <div className="w-20 h-20 mx-auto mb-6 bg-primary/10 rounded-full flex items-center justify-center">
+            <Shield className="h-10 w-10 text-primary" />
+          </div>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Ready to Protect Your Interests?
           </h2>
@@ -141,11 +227,154 @@ const Home = () => {
             Don't wait until it's too late. Contact our experienced legal team today 
             for a free consultation and take the first step toward resolving your legal matters.
           </p>
-          <Button size="lg" asChild>
-            <Link to="/contact">Schedule Your Free Consultation</Link>
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" className="shadow-glow" asChild>
+              <Link to="/contact">
+                <Phone className="w-5 h-5 mr-2" />
+                Schedule Your Free Consultation
+              </Link>
+            </Button>
+            <Button variant="outline" size="lg" asChild>
+              <Link to="/lawyers">
+                <Users className="w-5 h-5 mr-2" />
+                Meet Our Team
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="bg-background border-t border-border">
+        <div className="container mx-auto max-w-6xl px-4 py-16">
+          <div className="grid md:grid-cols-4 gap-8">
+            {/* Company Info */}
+            <div className="md:col-span-2">
+              <div className="flex items-center space-x-2 mb-6">
+                <Scale className="h-8 w-8 text-primary" />
+                <span className="text-2xl font-bold text-foreground">LegalPro</span>
+              </div>
+              <p className="text-muted-foreground mb-6 max-w-md">
+                Your trusted legal partner since 1995. We provide comprehensive legal services 
+                with a commitment to excellence and client satisfaction.
+              </p>
+              <div className="space-y-3">
+                <div className="flex items-center space-x-3 text-muted-foreground">
+                  <MapPin className="h-5 w-5 text-primary" />
+                  <span>123 Legal Street, Law District, City 12345</span>
+                </div>
+                <div className="flex items-center space-x-3 text-muted-foreground">
+                  <Phone className="h-5 w-5 text-primary" />
+                  <span>(555) 123-LEGAL</span>
+                </div>
+                <div className="flex items-center space-x-3 text-muted-foreground">
+                  <Mail className="h-5 w-5 text-primary" />
+                  <span>contact@legalpro.com</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h3 className="text-lg font-semibold text-foreground mb-6">Quick Links</h3>
+              <ul className="space-y-3">
+                {[
+                  { label: "About Us", href: "/about" },
+                  { label: "Practice Areas", href: "/practice-areas" },
+                  { label: "Our Lawyers", href: "/lawyers" },
+                  { label: "Client Reviews", href: "/reviews" },
+                  { label: "FAQ", href: "/faq" },
+                  { label: "Contact", href: "/contact" }
+                ].map((link) => (
+                  <li key={link.href}>
+                    <Link 
+                      to={link.href} 
+                      className="text-muted-foreground hover:text-primary transition-colors duration-200"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Legal Services */}
+            <div>
+              <h3 className="text-lg font-semibold text-foreground mb-6">Legal Services</h3>
+              <ul className="space-y-3">
+                {[
+                  "Corporate Law",
+                  "Personal Injury",
+                  "Criminal Defense",
+                  "Family Law",
+                  "Real Estate",
+                  "Immigration"
+                ].map((service) => (
+                  <li key={service}>
+                    <Link 
+                      to="/practice-areas" 
+                      className="text-muted-foreground hover:text-primary transition-colors duration-200"
+                    >
+                      {service}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Awards & Certifications */}
+          <div className="border-t border-border pt-12 mt-12">
+            <div className="text-center mb-8">
+              <h3 className="text-lg font-semibold text-foreground mb-6">Awards & Recognition</h3>
+              <div className="flex flex-wrap justify-center gap-8 items-center">
+                <div className="flex items-center space-x-2 text-muted-foreground">
+                  <Award className="h-6 w-6 text-primary" />
+                  <span>Best Law Firm 2023</span>
+                </div>
+                <div className="flex items-center space-x-2 text-muted-foreground">
+                  <TrendingUp className="h-6 w-6 text-primary" />
+                  <span>Top Rated Legal Services</span>
+                </div>
+                <div className="flex items-center space-x-2 text-muted-foreground">
+                  <Globe className="h-6 w-6 text-primary" />
+                  <span>ABA Certified</span>
+                </div>
+                <div className="flex items-center space-x-2 text-muted-foreground">
+                  <Gavel className="h-6 w-6 text-primary" />
+                  <span>25+ Years Excellence</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Emergency Contact */}
+          <div className="bg-card border border-border rounded-lg p-6 mb-8">
+            <div className="text-center">
+              <h3 className="text-xl font-semibold text-foreground mb-3">24/7 Emergency Legal Assistance</h3>
+              <p className="text-muted-foreground mb-4">
+                Facing a legal emergency? Our attorneys are available around the clock to provide immediate assistance.
+              </p>
+              <Button size="lg" className="shadow-glow">
+                <Phone className="w-5 h-5 mr-2" />
+                Call Emergency Hotline: (555) 911-LEGAL
+              </Button>
+            </div>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
+            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+              <div>
+                © 2024 LegalPro. All rights reserved. | Privacy Policy | Terms of Service | Attorney Advertising
+              </div>
+              <div className="text-xs">
+                Licensed to practice law in all 50 states. Individual results may vary.
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
