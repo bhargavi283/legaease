@@ -96,7 +96,7 @@ const Home = () => {
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Why Choose LegalPro?
+              Why Choose LegalEase?
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               We combine decades of experience with innovative legal strategies to deliver 
@@ -159,6 +159,62 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Awards & Recognition Section */}
+      <section className="py-20 px-4">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Awards & Recognition
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Our commitment to excellence has been recognized by leading legal organizations and publications.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                icon: Award,
+                title: "Best Law Firm 2024",
+                organization: "Legal Excellence Awards",
+                year: "2024"
+              },
+              {
+                icon: TrendingUp,
+                title: "Top Rated Legal Services",
+                organization: "National Bar Association",
+                year: "2023"
+              },
+              {
+                icon: Globe,
+                title: "ABA Certified Excellence",
+                organization: "American Bar Association",
+                year: "2023"
+              },
+              {
+                icon: Gavel,
+                title: "25 Years of Excellence",
+                organization: "State Legal Board",
+                year: "2024"
+              }
+            ].map((award, index) => (
+              <Card key={index} className="text-center border-border bg-card hover:shadow-elegant hover:scale-105 transition-all duration-300 group">
+                <CardHeader>
+                  <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <award.icon className="h-8 w-8 text-primary" />
+                  </div>
+                  <CardTitle className="text-lg group-hover:text-primary transition-colors">{award.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground font-medium">{award.organization}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{award.year}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Testimonials Section */}
       <section className="py-20 px-4">
         <div className="container mx-auto max-w-6xl">
@@ -174,7 +230,7 @@ const Home = () => {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                quote: "LegalPro saved my business. Their expertise in corporate law is unmatched.",
+                quote: "LegalEase saved my business. Their expertise in corporate law is unmatched.",
                 author: "Sarah Johnson",
                 role: "CEO, TechStart Inc.",
                 rating: 5
@@ -250,11 +306,11 @@ const Home = () => {
           <div className="grid md:grid-cols-4 gap-8">
             {/* Company Info */}
             <div className="md:col-span-2">
-              <div className="flex items-center space-x-2 mb-6">
-                <Scale className="h-8 w-8 text-primary" />
-                <span className="text-2xl font-bold text-foreground">LegalPro</span>
-              </div>
-              <p className="text-muted-foreground mb-6 max-w-md">
+            <div className="flex items-center space-x-2 mb-6">
+              <Scale className="h-8 w-8 text-primary" />
+              <span className="text-2xl font-bold text-foreground">LegalEase</span>
+            </div>
+            <p className="text-muted-foreground mb-6 max-w-md">
                 Your trusted legal partner since 1995. We provide comprehensive legal services 
                 with a commitment to excellence and client satisfaction.
               </p>
@@ -269,7 +325,7 @@ const Home = () => {
                 </div>
                 <div className="flex items-center space-x-3 text-muted-foreground">
                   <Mail className="h-5 w-5 text-primary" />
-                  <span>contact@legalpro.com</span>
+                  <span>contact@legalease.com</span>
                 </div>
               </div>
             </div>
@@ -323,50 +379,11 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Awards & Certifications */}
-          <div className="border-t border-border pt-12 mt-12">
-            <div className="text-center mb-8">
-              <h3 className="text-lg font-semibold text-foreground mb-6">Awards & Recognition</h3>
-              <div className="flex flex-wrap justify-center gap-8 items-center">
-                <div className="flex items-center space-x-2 text-muted-foreground">
-                  <Award className="h-6 w-6 text-primary" />
-                  <span>Best Law Firm 2023</span>
-                </div>
-                <div className="flex items-center space-x-2 text-muted-foreground">
-                  <TrendingUp className="h-6 w-6 text-primary" />
-                  <span>Top Rated Legal Services</span>
-                </div>
-                <div className="flex items-center space-x-2 text-muted-foreground">
-                  <Globe className="h-6 w-6 text-primary" />
-                  <span>ABA Certified</span>
-                </div>
-                <div className="flex items-center space-x-2 text-muted-foreground">
-                  <Gavel className="h-6 w-6 text-primary" />
-                  <span>25+ Years Excellence</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Emergency Contact */}
-          <div className="bg-card border border-border rounded-lg p-6 mb-8">
-            <div className="text-center">
-              <h3 className="text-xl font-semibold text-foreground mb-3">24/7 Emergency Legal Assistance</h3>
-              <p className="text-muted-foreground mb-4">
-                Facing a legal emergency? Our attorneys are available around the clock to provide immediate assistance.
-              </p>
-              <Button size="lg" className="shadow-glow">
-                <Phone className="w-5 h-5 mr-2" />
-                Call Emergency Hotline: (555) 911-LEGAL
-              </Button>
-            </div>
-          </div>
-
           {/* Bottom Bar */}
-          <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
+          <div className="border-t border-border pt-8 mt-12 text-center text-sm text-muted-foreground">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               <div>
-                © 2024 LegalPro. All rights reserved. | Privacy Policy | Terms of Service | Attorney Advertising
+                © 2024 LegalEase. All rights reserved. | Privacy Policy | Terms of Service | Attorney Advertising
               </div>
               <div className="text-xs">
                 Licensed to practice law in all 50 states. Individual results may vary.
